@@ -14,7 +14,7 @@ Prequalified=sum(x[x$Procurement.Method=="Prequalified tender","Value"])
 }
 
 #library(plyr)
-#minValue<-1000000
+minValue<-1000000
 #data<-read.csv("2012.csv",stringsAsFactors=FALSE)
 #data[is.na(data)]<-""
 
@@ -35,5 +35,14 @@ Prequalified=sum(x[x$Procurement.Method=="Prequalified tender","Value"])
 #totalValues<-data.frame(Agency.Name="All",ABN="All",makeSummary(data),Supplier.Name="All")
 
 #allValues<-data.frame(rbind(totalValues,agencyValues,abnValues,values))
-save(allValues,file="loadData.RData")
-write.csv(allValues,file="2012summary.csv",row.names=FALSE)
+#save(allValues,file="loadData.RData")
+#write.csv(allValues,file="2012summary.csv",row.names=FALSE)
+
+#restrict to only agencies and suppliers with at least $1m contract value to speed up performance
+largeABNs<-allValues[(allValues$"Agency.Name"=="All")&(allValues$Total>=minValue),"ABN"]
+largeAgencies<-allValues[(allValues$"ABN"=="All")&(allValues$Total>=minValue),"Agency.Name"]
+miniValues<-allValues[(allValues$ABN %in% largeABNs) & (allValues$"Agency.Name" %in% largeAgencies),]
+save(miniValues,file="loadDataMini.RData")
+write.csv(miniValues,file="2012mini.csv",row.names=FALSE)
+
+#used www.convertcsv.com/csv-to-json.htm to convert csv to json

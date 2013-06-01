@@ -1,1 +1,50 @@
-<h1>Hey</hi>
+<head>
+<script src="jquery.csv-0.71.min.js"></script>
+<script src="jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+<h1>Love Me Tender</h1>
+
+<select id="agencySelector"></select>
+<select id="supplierSelector"></select>
+
+<script>
+
+$(document).ready(function() {
+	$.ajax({
+		type: "GET",
+		url: "2012mini.json",
+		dataType: "text",
+		success: function(data) {
+			var all = $.parseJSON(data);
+			var suppliers = [];
+			var agencies = [];
+			$.each(all,function(index,value){
+				if(value["Agency.Name"]=="All"){
+					suppliers.push(value["Supplier.Name"]);
+				}
+				if(value["Supplier.Name"]=="All"){
+					agencies.push(value["Agency.Name"]);
+				}
+			});
+			suppliers=suppliers.sort();
+			agencies=agencies.sort();
+
+			alert(agencies);
+			$.each(suppliers,function(index,value){
+					$("#supplierSelector").append($("<option>").val(value).html(value));
+			});
+
+			$.each(agencies,function(index,value){
+					$("#agencySelector").append($("<option>").val(value).html(value));
+			});
+		}
+	});
+	$("#sample").click(function(){
+		alert($("#sample").text());
+	});
+});
+</script>
+<div id="sample"></div>
+</body>
