@@ -1,0 +1,173 @@
+html{
+	background: url(wallpaper.jpg);
+}
+
+body{
+	font-family: sans-serif;
+	width: 1000px;
+	height: 750px;
+	background: white;
+	margin: 0 auto;
+
+}
+
+h1{
+	text-align: center;
+	font-size: 24pt;
+}
+
+select{
+	display: block;
+	width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+input{
+	text-align: center;
+	margin: 0 auto;
+}
+
+div{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.circle {
+	width: 300px;
+	height: 300px;
+	background: blue;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
+}
+
+.circlecontainer {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	height: 300px;
+	width: 300px;
+}
+.heartcontainer {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	height: 243px;
+	width: 154px;
+}
+.heart { 
+	position: relative;
+}
+.heart:before, .heart:after {
+	position: absolute;
+  content: "";
+	width: 154px;
+	height: 243px;
+	background: red;
+	-moz-border-radius: 100px 100px 0 0;
+	border-radius: 100px 100px 0 0;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-transform-origin: 0 100%;
+	-moz-transform-origin: 0 100%;
+	-ms-transform-origin: 0 100%;
+	-o-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+}
+.heart:hover{
+	background: crimson;
+}
+.heart:after { 
+	-webkit-transform: rotate(45deg); 
+	-moz-transform: rotate(45deg); 
+	-ms-transform: rotate(45deg); 
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	-ms-transform-origin: 100% 100%;
+	-o-transform-origin: 100% 100%;
+	transform-origin :100% 100%;
+}
+.heartrectangle{
+	height: 230px;
+	width: 280px;
+}
+#heartrectangle1 {
+	position: relative;
+	top: -330px;
+	left: -320px;
+}
+#heartrectangle2 {
+	position: relative;
+	top: -550px;
+	left: 320px;
+}
+#heartrectangle3 {
+	position: relative;
+	top: -540px;
+	left: -290px;
+}
+#heartrectangle4 {
+	position: relative;
+	top: -770px;
+	left: 290px;
+}
+#heartrectangle5 {
+	position: relative;
+	top: -920px;
+}
+.heartlabel{
+	width: 280px;
+}
+
+#heart1,#heart2 {
+	top: -300px;
+}
+
+
+
+
+#heart1:before {
+	left: 187px;
+}
+
+#heart1:after{
+	left: 33px;
+}
+#heart2:before {
+	right: 33px;
+}
+#heart2:after{
+	right: 187px;
+}
+
+#heart3,#heart4 {
+	top: -50px;
+}
+#heart3:before {
+	left: 217px;
+}
+#heart3:after{
+	left: 63px;
+}
+#heart4:before {
+	right: 63px;
+}
+#heart4:after{
+	right: 217px;
+}
+
+#heart5 {
+	top: 20px;
+}
+#heart5:before {
+	left: 507px;
+}
+#heart5:after{
+	left: 353px;
+}

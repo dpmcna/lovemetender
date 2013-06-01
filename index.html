@@ -1,13 +1,134 @@
 <head>
 <script src="jquery.csv-0.71.min.js"></script>
 <script src="jquery-1.10.1.min.js"></script>
+<script src="utils.js"></script>
+<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
 <h1>Love Me Tender</h1>
+<form>
+<div>
+	<input type="radio" id="agencies" name="choice" value="Agencies" checked>Agencies</input>
+	<input type="radio" id="suppliers" name="choice" value="Suppliers">Suppliers</input>	
+</div>
+</form>
+<form>
+<div>
+	<select id="agenciesSelector"></select>
+	<select id="suppliersSelector" style="display:none"></select>
+	<input id="submit" type="button" value = "Go">
+</div>
+</form>
 
-<select id="agencySelector"></select>
-<select id="supplierSelector"></select>
+
+<div id="main" class="circle">
+	<div id="maincontainer" class="circlecontainer">
+		<div class="circlelabel" id="mainname"></div>
+		<div class="circlelabel" id="maincount"></div>
+		<div class="circlelabel" id="maintotal"></div>
+		<div class="circlelabel" id="maintax"></div>
+		<div class="circlelabel" id="mainopen"></div>
+		<div class="circlelabel" id="mainlimited"></div>
+		<div class="circlelabel" id="mainprequalified"></div>
+		<div class="circlelabel" id="maincommontitle"></div>
+		<div class="circlelabel" id=maindescription"></div>
+		<div class="circlelabel" id="mainprocurementmethod"></div>
+		<div class="circlelabel" id="maintitle"></div>
+		<div class="circlelabel" id="mainvalue"></div>
+	</div>
+</div>
+
+<div id="hearts">
+	<div id="heart1" class="heart"></div>
+	<div id="heart2" class="heart"></div>
+	<div id="heart3" class="heart"></div>
+	<div id="heart4" class="heart"></div>
+	<div id="heart5" class="heart"></div>
+	<div id="heartrectangle1" class="heartrectangle">
+		<div id="heart1container" class="heartcontainer">
+			<div class="heartlabel" id="heart1name"></div>
+			<div class="heartlabel" id="heart1count"></div>
+			<div class="heartlabel" id="heart1total"></div>
+			<div class="heartlabel" id="heart1tax"></div>
+			<div class="heartlabel" id="heart1open"></div>
+			<div class="heartlabel" id="heart1limited"></div>
+			<div class="heartlabel" id="heart1prequalified"></div>
+			<div class="heartlabel" id="heart1commontitle"></div>
+			<div class="heartlabel" id="heart1description"></div>
+			<div class="heartlabel" id="heart1procurementmethod"></div>
+			<div class="heartlabel" id="heart1title"></div>
+			<div class="heartlabel" id="heart1value"></div>	
+		</div>
+	</div>
+
+	<div id="heartrectangle2" class="heartrectangle">
+		<div id="heart2container" class="heartcontainer">
+			<div class="heartlabel" id="heart2name"></div>
+			<div class="heartlabel" id="heart2count"></div>
+			<div class="heartlabel" id="heart2total"></div>
+			<div class="heartlabel" id="heart2tax"></div>
+			<div class="heartlabel" id="heart2open"></div>
+			<div class="heartlabel" id="heart2limited"></div>
+			<div class="heartlabel" id="heart2prequalified"></div>
+			<div class="heartlabel" id="heart2commontitle"></div>
+			<div class="heartlabel" id="heart2description"></div>
+			<div class="heartlabel" id="heart2procurementmethod"></div>
+			<div class="heartlabel" id="heart2title"></div>
+			<div class="heartlabel" id="heart2value"></div>	
+		</div>
+	</div>
+
+	<div id="heartrectangle3" class="heartrectangle">
+		<div id="heart3container" class="heartcontainer">
+			<div class="heartlabel" id="heart3name"></div>
+			<div class="heartlabel" id="heart3count"></div>
+			<div class="heartlabel" id="heart3total"></div>
+			<div class="heartlabel" id="heart3tax"></div>
+			<div class="heartlabel" id="heart3open"></div>
+			<div class="heartlabel" id="heart3limited"></div>
+			<div class="heartlabel" id="heart3prequalified"></div>
+			<div class="heartlabel" id="heart3commontitle"></div>
+			<div class="heartlabel" id="heart3description"></div>
+			<div class="heartlabel" id="heart3procurementmethod"></div>
+			<div class="heartlabel" id="heart3title"></div>
+			<div class="heartlabel" id="heart3value"></div>	
+		</div>
+	</div>
+	<div id="heartrectangle4" class="heartrectangle">
+		<div id="heart4container" class="heartcontainer">
+			<div class="heartlabel" id="heart4name"></div>
+			<div class="heartlabel" id="heart4count"></div>
+			<div class="heartlabel" id="heart4total"></div>
+			<div class="heartlabel" id="heart4tax"></div>
+			<div class="heartlabel" id="heart4open"></div>
+			<div class="heartlabel" id="heart4limited"></div>
+			<div class="heartlabel" id="heart4prequalified"></div>
+			<div class="heartlabel" id="heart4commontitle"></div>
+			<div class="heartlabel" id="heart4description"></div>
+			<div class="heartlabel" id="heart4procurementmethod"></div>
+			<div class="heartlabel" id="heart4title"></div>
+			<div class="heartlabel" id="heart4value"></div>	
+		</div>
+	</div>
+	<div id="heartrectangle5" class="heartrectangle">
+		<div id="heart5container" class="heartcontainer">
+			<div class="heartlabel" id="heart5name"></div>
+			<div class="heartlabel" id="heart5count"></div>
+			<div class="heartlabel" id="heart5total"></div>
+			<div class="heartlabel" id="heart5tax"></div>
+			<div class="heartlabel" id="heart5open"></div>
+			<div class="heartlabel" id="heart5limited"></div>
+			<div class="heartlabel" id="heart5prequalified"></div>
+			<div class="heartlabel" id="heart5commontitle"></div>
+			<div class="heartlabel" id="heart5description"></div>
+			<div class="heartlabel" id="heart5procurementmethod"></div>
+			<div class="heartlabel" id="heart5title"></div>
+			<div class="heartlabel" id="heart5value"></div>	
+		</div>
+	</div>
+</div>
+
 
 <script>
 
@@ -28,23 +149,176 @@ $(document).ready(function() {
 					agencies.push(value["Agency.Name"]);
 				}
 			});
-			suppliers=suppliers.sort();
-			agencies=agencies.sort();
-
-			alert(agencies);
+			suppliers=suppliers.sort(sortInsensitive);
+			var index = suppliers.indexOf("All");
+			suppliers.splice(index,1);
+			suppliers.unshift("All");
+			agencies=agencies.sort(sortInsensitive);
+			index = agencies.indexOf("All");
+			agencies.splice(index,1);
+			agencies.unshift("All");
 			$.each(suppliers,function(index,value){
-					$("#supplierSelector").append($("<option>").val(value).html(value));
+					$("#suppliersSelector").append($("<option>").val(value).html(value));
 			});
 
 			$.each(agencies,function(index,value){
-					$("#agencySelector").append($("<option>").val(value).html(value));
+					$("#agenciesSelector").append($("<option>").val(value).html(value));
 			});
+			var matches = $.grep(all,function(x){return(x["Agency.Name"]=="All" && x["Supplier.Name"]=="All")});
+			$("#mainname").text($("#agenciesSelector").val());
+			$("#maincount").text(matches[0].Count+" contracts");
+			$("#maintotal").text("$"+commas(matches[0].Total.toFixed(0)));	
+			$("#maintax").text("$"+commas((matches[0].Total/23000000).toFixed(0))+" per taxpayer");
+			$("#mainopen").text("Open: "+(100*matches[0].Open/matches[0].Total).toFixed(0)+"%");
+			$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
+			$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
+			var matches2 = $.grep(all,function(x){return(x["Agency.Name"]=="All") && x["Supplier.Name"]!="All"});
+			matches2=matches2.sort(sortValue).slice(0,5);
+			$.each(matches2,function(index,value){
+				$("#heart"+(index+1)).val(value["Supplier.Name"]);
+				$("#heart"+(index+1)+"name").text(value["Supplier.Name"]);
+				$("#heart"+(index+1)+"count").text(value.Count+" contracts");
+				$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
+				$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
+				$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
+				$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
+				$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+			});	
+			
+			
 		}
 	});
-	$("#sample").click(function(){
-		alert($("#sample").text());
+});
+
+$('input:radio[name="choice"]').change(
+	function(){
+		if($(this).is(':checked') && $(this).val()=="Suppliers"){
+			document.getElementById("suppliersSelector").style.display="block";
+			document.getElementById("agenciesSelector").style.display="none";		
+		}
+		if($(this).is(':checked') && $(this).val()=="Agencies"){
+			document.getElementById("agenciesSelector").style.display="block";	
+			document.getElementById("suppliersSelector").style.display="none";	
+		}
+	}
+);
+$("#submit").click(function(){
+	$.ajax({
+		type: "GET",
+		url: "2012mini.json",
+		dataType: "text",
+		success: function(data) {
+			var all = $.parseJSON(data);
+			if($("#suppliers").is(':checked')){
+				var matches = $.grep(all,function(x){return(x["Agency.Name"]=="All" && x["Supplier.Name"]==$("#suppliersSelector").val())});
+				$("#mainname").text($("#suppliersSelector").val());
+				$("#maincount").text(matches[0].Count+" contracts");
+				$("#maintotal").text("$"+commas(matches[0].Total.toFixed(0)));	
+				$("#maintax").text("$"+commas((matches[0].Total/23000000).toFixed(2))+" per taxpayer");
+				$("#mainopen").text("Open: "+(100*matches[0].Open/matches[0].Total).toFixed(0)+"%");
+				$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
+				$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
+				var matches2 = $.grep(all,function(x){return(x["Supplier.Name"]==$("#suppliersSelector").val()) && x["Agency.Name"]!="All"});
+				matches2=matches2.sort(sortValue).slice(0,5);
+				$.each(matches2,function(index,value){
+					$("#heart"+(index+1)).val(value["Agency.Name"]);
+					$("#heart"+(index+1)+"name").text(value["Agency.Name"]);
+					$("#heart"+(index+1)+"count").text(value.Count+" contracts");
+					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
+					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
+					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+				});	
+			}	
+			if($("#agencies").is(':checked')){
+				var matches = $.grep(all,function(x){return(x["Supplier.Name"]=="All" && x["Agency.Name"]==$("#agenciesSelector").val())});
+				$("#mainname").text($("#agenciesSelector").val());
+				$("#maincount").text(matches[0].Count+" contracts");
+				$("#maintotal").text("$"+commas(matches[0].Total.toFixed(0)));	
+				$("#maintax").text("$"+commas((matches[0].Total/23000000).toFixed(2))+" per taxpayer");
+				$("#mainopen").text("Open: "+(100*matches[0].Open/matches[0].Total).toFixed(0)+"%");
+				$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
+				$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
+				var matches2 = $.grep(all,function(x){return(x["Agency.Name"]==$("#agenciesSelector").val()) && x["Supplier.Name"]!="All"});
+				matches2=matches2.sort(sortValue).slice(0,5);
+				$.each(matches2,function(index,value){
+					$("#heart"+(index+1)).val(value["Supplier.Name"]);
+					$("#heart"+(index+1)+"name").text(value["Supplier.Name"]);
+					$("#heart"+(index+1)+"count").text(value.Count+" contracts");
+					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
+					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
+					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+				});	
+			}	
+
+			
+		}
+
+
 	});
 });
+
+$(".heart").click(function(){
+	$.ajax({
+		type: "GET",
+		url: "2012mini.json",
+		dataType: "text",
+		success: function(data) {
+			var all = $.parseJSON(data);
+			if($("#suppliers").is(':checked')){
+				var matches = $.grep(all,function(x){return(x["Agency.Name"]=="All" && x["Supplier.Name"]==$(this).val())});
+				$("#mainname").text($(this).val());
+				$("#maincount").text(matches[0].Count+" contracts");
+				$("#maintotal").text("$"+commas(matches[0].Total.toFixed(0)));	
+				$("#maintax").text("$"+commas((matches[0].Total/23000000).toFixed(2))+" per taxpayer");
+				$("#mainopen").text("Open: "+(100*matches[0].Open/matches[0].Total).toFixed(0)+"%");
+				$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
+				$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
+				var matches2 = $.grep(all,function(x){return(x["Supplier.Name"]==$(this).val()) && x["Agency.Name"]!="All"});
+				matches2=matches2.sort(sortValue).slice(0,5);
+				$.each(matches2,function(index,value){
+					$("#heart"+(index+1)).val(value["Agency.Name"]);
+					$("#heart"+(index+1)+"name").text(value["Agency.Name"]);
+					$("#heart"+(index+1)+"count").text(value.Count+" contracts");
+					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
+					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
+					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+				});	
+			}	
+			if($("#agencies").is(':checked')){
+				var matches = $.grep(all,function(x){return(x["Supplier.Name"]=="All" && x["Agency.Name"]==$(this).val())});
+				$("#mainname").text($(this).val());
+				$("#maincount").text(matches[0].Count+" contracts");
+				$("#maintotal").text("$"+commas(matches[0].Total.toFixed(0)));	
+				$("#maintax").text("$"+commas((matches[0].Total/23000000).toFixed(2))+" per taxpayer");
+				$("#mainopen").text("Open: "+(100*matches[0].Open/matches[0].Total).toFixed(0)+"%");
+				$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
+				$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
+				var matches2 = $.grep(all,function(x){return(x["Agency.Name"]==$(this).val()) && x["Supplier.Name"]!="All"});
+				matches2=matches2.sort(sortValue).slice(0,5);
+				$.each(matches2,function(index,value){
+					$("#heart"+(index+1)).val(value["Supplier.Name"]);
+					$("#heart"+(index+1)+"name").text(value["Supplier.Name"]);
+					$("#heart"+(index+1)+"count").text(value.Count+" contracts");
+					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
+					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
+					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+				});	
+			}	
+
+			
+		}
+
+
+	});
+});
+
 </script>
-<div id="sample"></div>
 </body>
