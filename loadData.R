@@ -1,1 +1,11 @@
-read.csv("2012.csv")
+#library(plyr)
+#minValue<-1000000
+#data<-read.csv("2012.csv",stringsAsFactors=FALSE)
+#data[is.na(data)]<-""
+#abnValues<-ddply(data,"ABN",function(x){sum(x$Value)})
+#abnValues<-abnValues[order(-abnValues$V1),]
+abnValues<-data.frame(abnValues,masterName=sapply(abnValues$ABN,function(x){names(which.max(table(data[data$ABN==x,"Supplier.Name"])))}))
+abnValues<-data.frame(Agency.Name="All",abnValues)
+agencyValues<-ddply(data,"Agency.Name",function(x){sum(x$Value)})
+agencyValues<-data.frame(Agency.Name=agencyValues$Agency.Name,ABN="All",V1=agencyValues$V1)
+values<-ddply(data,.(Agency.Name,ABN),function(x){sum(x$Value)})
