@@ -26,6 +26,8 @@ body{
 	font-style: italic;
 }
 
+
+
 select{
 	display: block;
 	width: 800px;
@@ -36,6 +38,9 @@ select{
 input{
 	text-align: center;
 	margin: 0 auto;
+}
+#radio{
+	text-align: center;
 }
 
 div{
