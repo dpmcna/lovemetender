@@ -3,10 +3,12 @@
 <script src="jquery-1.10.1.min.js"></script>
 <script src="utils.js"></script>
 <link rel="stylesheet" type="text/css" href="index.css">
+<link rel="shortcut icon" href="heart.ico">
 </head>
 
 <body>
-<h1>Love Me Tender</h1>
+<div id="h1">Love Me Tender</div>
+<div id="h2">From GovHack to LoveHack.<br> A match-making service for government agencies and suppliers.</div><br>
 <form>
 <div>
 	<input type="radio" id="agencies" name="choice" value="Agencies" checked>Agencies</input>
@@ -175,7 +177,7 @@ $(document).ready(function() {
 			var matches2 = $.grep(all,function(x){return(x["Agency.Name"]=="All") && x["Supplier.Name"]!="All"});
 			matches2=matches2.sort(sortValue).slice(0,5);
 			$.each(matches2,function(index,value){
-				$("#heart"+(index+1)).val(value["Supplier.Name"]);
+				$("#heartrectangle"+(index+1)).val(["Supplier",value["Supplier.Name"]]);
 				$("#heart"+(index+1)+"name").text(value["Supplier.Name"]);
 				$("#heart"+(index+1)+"count").text(value.Count+" contracts");
 				$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
@@ -219,16 +221,21 @@ $("#submit").click(function(){
 				$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
 				$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
 				var matches2 = $.grep(all,function(x){return(x["Supplier.Name"]==$("#suppliersSelector").val()) && x["Agency.Name"]!="All"});
-				matches2=matches2.sort(sortValue).slice(0,5);
+				matches2=matches2.sort(sortValue).slice(0,Math.min(matches2.length,5));
+				$(".heart").hide();
+				$(".heartlabel").hide();
+				$(".heartrectangle").val("").hide();
 				$.each(matches2,function(index,value){
-					$("#heart"+(index+1)).val(value["Agency.Name"]);
-					$("#heart"+(index+1)+"name").text(value["Agency.Name"]);
-					$("#heart"+(index+1)+"count").text(value.Count+" contracts");
-					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
-					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
-					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)).show();
+					$("#heartrectangle"+(index+1)).show();
+					$("#heartrectangle"+(index+1)).val(["Agency",value["Agency.Name"]]).show();
+					$("#heart"+(index+1)+"name").text(value["Agency.Name"]).show();
+					$("#heart"+(index+1)+"count").text(value.Count+" contracts").show();
+					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0))).show();	
+					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer").show();
+					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%").show();
 					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
-					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%").show();
 				});	
 			}	
 			if($("#agencies").is(':checked')){
@@ -241,16 +248,20 @@ $("#submit").click(function(){
 				$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
 				$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
 				var matches2 = $.grep(all,function(x){return(x["Agency.Name"]==$("#agenciesSelector").val()) && x["Supplier.Name"]!="All"});
-				matches2=matches2.sort(sortValue).slice(0,5);
+				matches2=matches2.sort(sortValue).slice(0,Math.min(matches2.length,5));
+				$(".heart").hide();
+				$(".heartlabel").hide();
+				$(".heartrectangle").val("").hide();
 				$.each(matches2,function(index,value){
-					$("#heart"+(index+1)).val(value["Supplier.Name"]);
-					$("#heart"+(index+1)+"name").text(value["Supplier.Name"]);
-					$("#heart"+(index+1)+"count").text(value.Count+" contracts");
-					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
-					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
-					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
-					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
-					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)).show();
+					$("#heartrectangle"+(index+1)).val(["Supplier",value["Supplier.Name"]]).show();
+					$("#heart"+(index+1)+"name").text(value["Supplier.Name"]).show();
+					$("#heart"+(index+1)+"count").text(value.Count+" contracts").show();
+					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0))).show();	
+					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer").show();
+					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%").show();
+					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%").show();
+					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%").show();
 				});	
 			}	
 
@@ -261,55 +272,65 @@ $("#submit").click(function(){
 	});
 });
 
-$(".heart").click(function(){
+$(".heartrectangle").click(function(){
+	value=$(this).val()[1];
+	type=$(this).val()[0];
 	$.ajax({
 		type: "GET",
 		url: "2012mini.json",
 		dataType: "text",
 		success: function(data) {
 			var all = $.parseJSON(data);
-			if($("#suppliers").is(':checked')){
-				var matches = $.grep(all,function(x){return(x["Agency.Name"]=="All" && x["Supplier.Name"]==$(this).val())});
-				$("#mainname").text($(this).val());
+			if(type=="Supplier"){
+				var matches = $.grep(all,function(x){return(x["Agency.Name"]=="All" && x["Supplier.Name"]==value)});
+				$("#mainname").text(value);
 				$("#maincount").text(matches[0].Count+" contracts");
 				$("#maintotal").text("$"+commas(matches[0].Total.toFixed(0)));	
 				$("#maintax").text("$"+commas((matches[0].Total/23000000).toFixed(2))+" per taxpayer");
 				$("#mainopen").text("Open: "+(100*matches[0].Open/matches[0].Total).toFixed(0)+"%");
 				$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
 				$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
-				var matches2 = $.grep(all,function(x){return(x["Supplier.Name"]==$(this).val()) && x["Agency.Name"]!="All"});
-				matches2=matches2.sort(sortValue).slice(0,5);
+				var matches2 = $.grep(all,function(x){return(x["Supplier.Name"]==value) && x["Agency.Name"]!="All"});
+				matches2=matches2.sort(sortValue).slice(0,Math.min(matches2.length,5));
+				$(".heart").hide();
+				$(".heartlabel").hide();
+				$(".heartrectangle").val("").hide();
 				$.each(matches2,function(index,value){
-					$("#heart"+(index+1)).val(value["Agency.Name"]);
-					$("#heart"+(index+1)+"name").text(value["Agency.Name"]);
-					$("#heart"+(index+1)+"count").text(value.Count+" contracts");
-					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
-					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
-					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
-					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
-					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)).show();
+					$("#heartrectangle"+(index+1)).val(["Agency",value["Agency.Name"]]).show();
+					$("#heart"+(index+1)+"name").text(value["Agency.Name"]).show();
+					$("#heart"+(index+1)+"count").text(value.Count+" contracts").show();
+					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0))).show();	
+					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer").show();
+					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%").show();
+					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%").show();
+					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%").show();
 				});	
 			}	
-			if($("#agencies").is(':checked')){
-				var matches = $.grep(all,function(x){return(x["Supplier.Name"]=="All" && x["Agency.Name"]==$(this).val())});
-				$("#mainname").text($(this).val());
+			if(type=="Agency"){
+				var matches = $.grep(all,function(x){return(x["Supplier.Name"]=="All" && x["Agency.Name"]==value)});
+				$("#mainname").text(value);
 				$("#maincount").text(matches[0].Count+" contracts");
 				$("#maintotal").text("$"+commas(matches[0].Total.toFixed(0)));	
 				$("#maintax").text("$"+commas((matches[0].Total/23000000).toFixed(2))+" per taxpayer");
 				$("#mainopen").text("Open: "+(100*matches[0].Open/matches[0].Total).toFixed(0)+"%");
 				$("#mainlimited").text("Limited: "+(100*matches[0].Limited/matches[0].Total).toFixed(0)+"%");
 				$("#mainprequalified").text("Prequalified: "+(100*matches[0].Prequalified/matches[0].Total).toFixed(0)+"%");
-				var matches2 = $.grep(all,function(x){return(x["Agency.Name"]==$(this).val()) && x["Supplier.Name"]!="All"});
-				matches2=matches2.sort(sortValue).slice(0,5);
+				var matches2 = $.grep(all,function(x){return(x["Agency.Name"]==value && x["Supplier.Name"]!="All")});
+				matches2=matches2.sort(sortValue).slice(0,Math.min(matches2.length,5));
+				$(".heart").hide();
+				$(".heartlabel").hide();
+				$(".heartrectangle").hide();
 				$.each(matches2,function(index,value){
-					$("#heart"+(index+1)).val(value["Supplier.Name"]);
-					$("#heart"+(index+1)+"name").text(value["Supplier.Name"]);
-					$("#heart"+(index+1)+"count").text(value.Count+" contracts");
-					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0)));	
-					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer");
-					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%");
-					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%");
-					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%");
+					$("#heart"+(index+1)).show();
+					$("#heartrectangle"+(index+1)).val(["Supplier",value["Supplier.Name"]]).show();
+					$("#heart"+(index+1)+"name").text(value["Supplier.Name"]).show();
+					$("#heart"+(index+1)+"count").text(value.Count+" contracts").show();
+					$("#heart"+(index+1)+"total").text("$"+commas(value.Total.toFixed(0))).show();	
+					$("#heart"+(index+1)+"tax").text("$"+commas((value.Total/23000000).toFixed(2))+" per taxpayer").show();
+					$("#heart"+(index+1)+"open").text("Open: "+(100*value.Open/value.Total).toFixed(0)+"%").show();
+					$("#heart"+(index+1)+"limited").text("Limited: "+(100*value.Limited/value.Total).toFixed(0)+"%").show();
+					$("#heart"+(index+1)+"prequalified").text("Prequalified: "+(100*value.Prequalified/value.Total).toFixed(0)+"%").show();
 				});	
 			}	
 
@@ -319,6 +340,6 @@ $(".heart").click(function(){
 
 	});
 });
-
+	
 </script>
 </body>

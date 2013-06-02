@@ -11,9 +11,19 @@ body{
 
 }
 
-h1{
+#h1{
 	text-align: center;
 	font-size: 24pt;
+	position: relative;
+	float: left;
+	left: 10px;
+}
+#h2{
+	float: left;
+	text-align: left;
+	position: relative;
+	left: 40px;
+	font-style: italic;
 }
 
 select{
@@ -45,10 +55,15 @@ div{
 .circlecontainer {
 	display: table-cell;
 	text-align: center;
+	color: white;
 	vertical-align: middle;
 	height: 300px;
 	width: 300px;
 }
+.circlelabel{
+	font-size: 14px;
+}
+
 .heartcontainer {
 	display: table-cell;
 	text-align: center;
@@ -78,9 +93,7 @@ div{
 	-o-transform-origin: 0 100%;
 	transform-origin: 0 100%;
 }
-.heart:hover{
-	background: crimson;
-}
+
 .heart:after { 
 	-webkit-transform: rotate(45deg); 
 	-moz-transform: rotate(45deg); 
@@ -93,6 +106,7 @@ div{
 	-o-transform-origin: 100% 100%;
 	transform-origin :100% 100%;
 }
+
 .heartrectangle{
 	height: 230px;
 	width: 280px;
@@ -123,6 +137,7 @@ div{
 }
 .heartlabel{
 	width: 280px;
+	font-size: 10pt;
 }
 
 #heart1,#heart2 {
